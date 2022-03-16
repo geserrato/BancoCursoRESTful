@@ -26,17 +26,11 @@ public class ApplicationDbContext : DbContext
             switch (entry.State)
             {
                 case EntityState.Modified:
-                    entry.Entity.Created = _dateTimeService.NowUtc;
-                    break;
-                case EntityState.Added:
                     entry.Entity.LastModified = _dateTimeService.NowUtc;
                     break;
-                case EntityState.Detached:
-                case EntityState.Unchanged:
-                case EntityState.Deleted:
+                case EntityState.Added:
+                    entry.Entity.Created = _dateTimeService.NowUtc;
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         }
 
