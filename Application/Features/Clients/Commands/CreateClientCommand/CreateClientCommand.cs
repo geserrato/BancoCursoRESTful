@@ -30,7 +30,7 @@ namespace Application.Features.Clients.Commands.CreateClientCommand
         public async Task<Response<int>> Handle(CreateClientCommand request, CancellationToken cancellationToken)
         {
             var newRegistration = _mapper.Map<Client>(request);
-            Client data = await _repositoryAsync.AddAsync(newRegistration);
+            Client data = await _repositoryAsync.AddAsync(newRegistration, cancellationToken);
 
             return new Response<int>(data.Id);
         }

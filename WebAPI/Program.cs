@@ -11,7 +11,7 @@ builder.Services.AddApplicationLayer();
 builder.Services.AddSharedInfrastructure(builder.Configuration);
 builder.Services.AddPersistenceInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
-builder.Services.AddApiVersioning();
+builder.Services.AddApiVersioningExtension();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

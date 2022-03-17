@@ -2,13 +2,13 @@
 
 namespace Application.Exceptions;
 
-public abstract class ApiException : Exception
+public class ApiException : Exception
 {
-    protected ApiException() : base () { }
+    public ApiException() : base () { }
 
-    protected ApiException(string message) : base(message) { }
+    public ApiException(string message) : base(message) { }
 
-    protected ApiException(string message, params object[] args) : base(String.Format(CultureInfo.CurrentCulture, message, args))
+    public ApiException(string message, params object[] args) : base(String.Format(CultureInfo.CurrentCulture, message, args))
     {
     }
 }
