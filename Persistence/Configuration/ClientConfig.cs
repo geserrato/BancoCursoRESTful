@@ -19,7 +19,7 @@ public class ClientConfig : IEntityTypeConfiguration<Client>
         builder.Property(client => client.BirthDate)
             .IsRequired();
         builder.Property(client => client.Phone)
-            .HasMaxLength(9)
+            .HasMaxLength(10)
             .IsRequired();
         builder.Property(client => client.Email)
             .HasMaxLength(100);

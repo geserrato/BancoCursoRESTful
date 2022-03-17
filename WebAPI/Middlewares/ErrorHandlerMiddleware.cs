@@ -22,7 +22,7 @@ namespace WebAPI.Middlewares
             }
             catch (Exception error)
             {
-                var response = context.Response;
+                HttpResponse response = context.Response;
                 response.ContentType = "application/json";
                 var responseModel = new Response<string>() { Succeeded = false, Message = error?.Message };
 
@@ -47,7 +47,7 @@ namespace WebAPI.Middlewares
                         break;
                 }
 
-                var result = JsonSerializer.Serialize(responseModel);
+                string result = JsonSerializer.Serialize(responseModel);
 
                 await response.WriteAsync(result);
             }

@@ -9,13 +9,13 @@ public class ValidationException : Exception
         Errors = new List<string>();
     }
 
-    public List<string> Errors { get; }
+    public List<string>? Errors { get; }
 
     public ValidationException(IEnumerable<ValidationFailure> failures): this()
     {
         foreach (ValidationFailure failure in failures)
         {
-            Errors.Add(failure.ErrorMessage);
+            Errors?.Add(failure.ErrorMessage);
         }
     }
 }
