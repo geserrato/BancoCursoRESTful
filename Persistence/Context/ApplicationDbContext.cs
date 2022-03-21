@@ -11,7 +11,9 @@ public class ApplicationDbContext : DbContext
 {
     private readonly IDateTimeService _dateTimeService;
 
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IDateTimeService dateTimeService) : base(options)
+    public ApplicationDbContext(
+        DbContextOptions<ApplicationDbContext> options,
+        IDateTimeService dateTimeService) : base(options)
     {
         ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         _dateTimeService = dateTimeService;

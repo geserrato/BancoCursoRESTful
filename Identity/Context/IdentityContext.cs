@@ -1,13 +1,13 @@
-﻿using Identity.Model;
+using Identity.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Identity.Context;
-
-public class IdentityContext : IdentityDbContext<ApplicationUser>
+namespace Identity.Context
 {
-    public IdentityContext(DbContextOptions<IdentityContext> options): base(options)
+    public class IdentityContext : IdentityDbContext<ApplicationUser>
     {
-        
+        public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
+        {
+        }
     }
 }

@@ -3,6 +3,7 @@ using Application.Features.Clients.Commands.DeleteClientCommand;
 using Application.Features.Clients.Commands.UpdateClientCommand;
 using Application.Features.Clients.Queries;
 using Application.Features.Clients.Queries.GetAllClients;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.v1
@@ -11,12 +12,14 @@ namespace WebAPI.Controllers.v1
     public class ClientController : BaseApiController
     {
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post(CreateClientCommand command)
         {
             return Ok(await Mediator?.Send(command)!);
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Put(int id, UpdateClientCommand command)
         {
             if (id != command.Id)
@@ -28,6 +31,7 @@ namespace WebAPI.Controllers.v1
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Put(int id)
         {
             return Ok(await Mediator?.Send(new DeleteClientCommand { Id = id })!);

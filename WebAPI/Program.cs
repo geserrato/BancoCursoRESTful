@@ -1,6 +1,6 @@
 using Application;
 using Identity;
-using Identity.Model;
+using Identity.Models;
 using Identity.Seeds;
 using Microsoft.AspNetCore.Identity;
 using Persistence;
@@ -23,7 +23,7 @@ builder.Services.AddSwaggerGen();
 
 WebApplication app = builder.Build();
 
-using(IServiceScope scope = app.Services.CreateScope())
+using (IServiceScope scope = app.Services.CreateScope())
 {
     IServiceProvider services = scope.ServiceProvider;
     try
@@ -35,7 +35,7 @@ using(IServiceScope scope = app.Services.CreateScope())
         await DefaultAdminUser.SeedAsync(userManager, roleManager);
         await DefaultBasicUser.SeedAsync(userManager, roleManager);
     }
-    catch(Exception ex)
+    catch (Exception ex)
     {
         throw;
     }
@@ -48,6 +48,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseErrorHandlingMiddleware();
